@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>无线网络桥接-原理、设置方法与常见问题完整指南</title>
+<meta name="description" content="无线网络桥接是把两个或多个网络连接起来、扩展覆盖范围的技术方案。本页讲解桥接与中继的区别、WDS 与无线网桥设备选择、路由器桥接设置步骤、信号与带宽注意事项以及常见问题排查。">
+<meta name="keywords" content="无线网络桥接,无线桥接设置,WDS桥接,无线网桥,路由器桥接,网络扩展,信号中继">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --ink:#12212f;
+  --ink-soft:#3d5566;
+  --line:#d7e2ea;
+  --bg:#f4f8fb;
+  --panel:#ffffff;
+  --brand:#0f6ea8;
+  --brand-deep:#0a4c76;
+  --accent:#12a37e;
+  --warn:#b4761a;
+  --radius:14px;
+  --shadow:0 6px 22px rgba(18,33,47,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  font-size:16px;
+}
+a{color:var(--brand-deep);text-decoration:none;}
+a:hover{text-decoration:underline;}
+h1,h2,h3{line-height:1.35;margin:0 0 .6em;}
+p{margin:0 0 1em;}
+ul,ol{margin:0 0 1em;padding-left:1.3em;}
+li{margin-bottom:.4em;}
+
+/* ---------- 顶栏 ---------- */
+.site-header{
+  background:linear-gradient(135deg,#0a4c76 0%,#0f6ea8 55%,#12a37e 100%);
+  color:#fff;
+  padding:0;
+}
+.header-inner{
+  max-width:1180px;
+  margin:0 auto;
+  padding:18px 22px 22px;
+}
+.brand-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand-mark{
+  width:42px;height:42px;
+  border-radius:12px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:19px;letter-spacing:.5px;
+}
+.brand-text b{font-size:19px;display:block;letter-spacing:.5px;}
+.brand-text span{font-size:12.5px;opacity:.85;}
+.header-note{
+  font-size:13px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);
+  padding:6px 14px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.main-nav{
+  margin-top:18px;
+  border-top:1px solid rgba(255,255,255,.22);
+  padding-top:12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 4px;
+}
+.main-nav a{
+  color:#eaf6ff;
+  font-size:14.5px;
+  padding:6px 13px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:background .18s ease;
+}
+.main-nav a:hover{background:rgba(255,255,255,.18);text-decoration:none;}
+
+/* ---------- 布局 ---------- */
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:26px 22px 10px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 320px;
+  gap:28px;
+  align-items:start;
+}
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px 26px;
+  box-shadow:var(--shadow);
+  margin-bottom:26px;
+}
+.panel h2{
+  font-size:21px;
+  color:var(--brand-deep);
+  padding-bottom:10px;
+  border-bottom:2px solid #e6eef4;
+  margin-bottom:16px;
+}
+.panel h3{
+  font-size:17px;
+  color:var(--ink);
+  margin-top:1.4em;
+}
+.panel h3:first-of-type{margin-top:0;}
+.lead{
+  font-size:16.5px;
+  color:var(--ink-soft);
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:30px 28px 26px;
+  margin-bottom:26px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-70px;top:-70px;
+  width:230px;height:230px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(18,163,126,.16),rgba(15,110,168,.10) 60%,transparent 70%);
+}
+.hero h1{
+  font-size:29px;
+  color:var(--brand-deep);
+  margin-bottom:14px;
+  position:relative;
+  z-index:1;
+}
+.hero p{position:relative;z-index:1;}
+.hero-points{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:12px;
+  margin-top:20px;
+  position:relative;
+  z-index:1;
+}
+.hero-points div{
+  background:#f2f8fc;
+  border:1px solid #dceaf3;
+  border-radius:10px;
+  padding:12px 14px;
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.hero-points strong{display:block;color:var(--brand-deep);font-size:14.5px;margin-bottom:2px;}
+
+/* ---------- 卡片网格 ---------- */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:16px 18px;
+  background:#fbfdff;
+  transition:border-color .18s ease, transform .18s ease;
+}
+.card:hover{border-color:#a9cde3;transform:translateY(-2px);}
+.card h3{
+  font-size:16px;
+  margin:0 0 8px;
+  color:var(--brand-deep);
+}
+.card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:0;}
+
+/* ---------- 步骤 ---------- */
+.steps{
+  counter-reset:step;
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.steps li{
+  counter-increment:step;
+  position:relative;
+  padding:14px 16px 14px 58px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fbfdff;
+  margin-bottom:12px;
+}
+.steps li::before{
+  content:counter(step);
+  position:absolute;
+  left:16px;top:14px;
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--brand);
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps li b{display:block;color:var(--brand-deep);margin-bottom:2px;}
+.steps li p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+
+/* ---------- 对比表 ---------- */
+.table-scroll{overflow-x:auto;}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14.5px;
+  min-width:520px;
+}
+th,td{
+  border:1px solid var(--line);
+  padding:10px 12px;
+  text-align:left;
+  vertical-align:top;
+}
+th{background:#eef6fb;color:var(--brand-deep);font-weight:600;}
+tbody tr:nth-child(even){background:#fafcfe;}
+
+/* ---------- 提示框 ---------- */
+.tip{
+  border-left:4px solid var(--accent);
+  background:#f0faf6;
+  padding:12px 16px;
+  border-radius:0 10px 10px 0;
+  font-size:14.5px;
+  color:#1c4f3f;
+  margin:16px 0;
+}
+.warn{
+  border-left:4px solid var(--warn);
+  background:#fdf7ec;
+  padding:12px 16px;
+  border-radius:0 10px 10px 0;
+  font-size:14.5px;
+  color:#6b4711;
+  margin:16px 0;
+}
+
+/* ---------- 侧栏 ---------- */
+.side .panel{padding:20px 20px;}
+.side h2{font-size:17px;}
+.side-nav{
+  list-style:none;
+  padding:0;
+  margin:0;
+  font-size:14.5px;
+}
+.side-nav li{margin-bottom:2px;}
+.side-nav a{
+  display:block;
+  padding:7px 10px;
+  border-radius:8px;
+  color:var(--ink-soft);
+  text-decoration:none;
+}
+.side-nav a:hover{background:#eef6fb;color:var(--brand-deep);text-decoration:none;}
+.term-list{list-style:none;padding:0;margin:0;font-size:14px;}
+.term-list li{
+  padding:9px 0;
+  border-bottom:1px dashed #e2ecf3;
+  color:var(--ink-soft);
+}
+.term-list li:last-child{border-bottom:none;}
+.term-list b{color:var(--brand-deep);}
+
+/* ---------- FAQ ---------- */
+.faq-item{
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin-bottom:10px;
+  background:#fbfdff;
+  overflow:hidden;
+}
+.faq-item summary{
+  cursor:pointer;
+  padding:13px 16px;
+  font-weight:600;
+  font-size:15px;
+  color:var(--brand-deep);
+  list-style:none;
+  position:relative;
+  padding-right:44px;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:"+";
+  position:absolute;
+  right:16px;top:50%;
+  transform:translateY(-50%);
+  font-size:19px;
+  color:var(--brand);
+  font-weight:400;
+}
+.faq-item[open] summary::after{content:"–";}
+.faq-item .faq-body{
+  padding:0 16px 14px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  border-top:1px solid #eaf2f7;
+  padding-top:12px;
+}
+.faq-item .faq-body p:last-child{margin-bottom:0;}
+
+/* ---------- 页脚 ---------- */
+.site-footer{
+  background:#0e2333;
+  color:#b9cddb;
+  margin-top:34px;
+  padding:34px 22px 20px;
+}
+.footer-inner{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:26px;
+}
+.site-footer h3{
+  color:#fff;
+  font-size:15.5px;
+  margin-bottom:12px;
+}
+.site-footer p,.site-footer li{font-size:13.8px;color:#a9c0d1;}
+.site-footer ul{list-style:none;padding:0;margin:0;}
+.site-footer a{color:#cfe4f2;text-decoration:none;}
+.site-footer a:hover{text-decoration:underline;}
+.footer-bottom{
+  max-width:1180px;
+  margin:22px auto 0;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.12);
+  font-size:13px;
+  color:#8ba5b8;
+  text-align:center;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:960px){
+  .layout{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:640px){
+  body{font-size:15.5px;}
+  .wrap{padding:18px 14px 6px;}
+  .header-inner{padding:14px 14px 16px;}
+  .hero{padding:22px 18px;}
+  .hero h1{font-size:23px;}
+  .panel{padding:18px 16px;}
+  .panel h2{font-size:19px;}
+  .footer-inner{grid-template-columns:1fr;}
+  .header-note{display:none;}
+  .main-nav a{font-size:13.5px;padding:5px 10px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="brand-mark">桥</div>
+        <div class="brand-text">
+          <b>无线网络桥接指南</b>
+          <span>原理 · 设备选型 · 设置步骤 · 故障排查</span>
+        </div>
+      </div>
+      <div class="header-note">面向家庭与小型办公网络的实用参考</div>
+    </div>
+    <nav class="main-nav" aria-label="页面导航">
+      <a href="#intro">概念入门</a>
+      <a href="#compare">桥接与中继</a>
+      <a href="#types">常见方式</a>
+      <a href="#setup">设置思路</a>
+      <a href="#choose">设备选型</a>
+      <a href="#tips">注意事项</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="layout">
+
+    <main>
+
+      <section class="hero" id="intro">
+        <h1>无线网络桥接：把两段网络连成一张可用的网</h1>
+        <p class="lead">无线网络桥接的核心目的，是在不重新布线的前提下，让原本彼此独立的网络区域互相连通，或者把主路由器的网络覆盖延伸到信号薄弱的房间、楼层与相邻建筑。它解决的是“有线不方便、无线信号又到不了”的现实问题。</p>
+        <p>理解桥接，先要分清两件事：一是<strong>链路层上的连接</strong>，即把两个网段在数据链路层打通，使设备看起来处在同一网络里；二是<strong>覆盖层的延伸</strong>，即让终端在更远的位置仍能接入同一个网络。不同设备对这两件事的实现程度不一样，所以设置前先明确自己的目标，比盲目照抄教程更重要。</p>
+        <div class="hero-points">
+          <div><strong>目标一：扩展覆盖</strong>让弱信号区域获得可用的无线接入点</div>
+          <div><strong>目标二：连通网段</strong>把两个独立网络在链路层连接起来</div>
+          <div><strong>目标三：免布线互联</strong>在两栋建筑之间替代网线或光纤</div>
+        </div>
+      </section>
+
+      <section class="panel" id="compare">
+        <h2>桥接与中继、Mesh 的区别</h2>
+        <p>这三个词经常被混用。它们都能“让信号更远”，但工作方式和适用场景并不相同。选择之前，先看清差异，可以避免买错设备或设错模式。</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>方式</th>
+                <th>基本工作方式</th>
+                <th>典型场景</th>
+                <th>需要注意</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无线桥接</td>
+                <td>把两个网络在链路层连通，设备可处于同一网段</td>
+                <td>两栋楼之间、跨房间连通两个路由器</td>
+                <td>对设备兼容性与信道一致性要求较高</td>
+              </tr>
+              <tr>
+                <td>无线中继</td>
+                <td>接收主信号后重新发射，终端通常获得新的地址段</td>
+                <td>单点补盲，扩大某一区域的覆盖</td>
+                <td>带宽会明显衰减，延迟可能增加</td>
+              </tr>
+              <tr>
+                <td>Mesh 组网</td>
+                <td>多个节点协同，终端在节点间自动漫游</td>
+                <td>大平层、复式、多房间整体覆盖</td>
+                <td>通常需要同品牌同系列设备</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip">如果只是想让某个房间信号好一点，中继或 Mesh 往往更省事；如果目标是让两个网段的设备互相访问，那么桥接才是对的方向。</div>
+      </section>
+
+      <section class="panel" id="types">
+        <h2>无线网络桥接的几种常见实现方式</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>路由器 WDS 桥接</h3>
+            <p>两台支持 WDS 的无线路由器互相填写对方的无线信息，形成点对点或点对多点连接。适合家用环境，成本低，但不同品牌之间兼容性差异较大。</p>
+          </div>
+          <div class="card">
+            <h3>专用无线网桥</h3>
+            <p>成对使用的定向设备，通常配合抛物面或平板天线，用于楼与楼、厂区与办公区之间的远距离互联，抗干扰与稳定性优于普通路由器。</p>
+          </div>
+          <div class="card">
+            <h3>客户端模式（Client）</h3>
+            <p>把一台设备设为客户端，接入上级无线网络，再通过其有线口输出网络，相当于“无线转有线”，常用于电视、监控等只有网口的设备。</p>
+          </div>
+          <div class="card">
+            <h3>接入点模式（AP）</h3>
+            <p>设备通过网线接入主网络，再对外发射无线信号。严格说属于有线回程的覆盖扩展，但常与桥接一起用于混合组网。</p>
+          </div>
+        </div>
+        <h3>如何判断自己需要哪一种</h3>
+        <p>如果两处之间可以拉网线，优先考虑有线回程加接入点，稳定性最好。如果完全无法布线，且两端距离较近、中间遮挡不多，可先尝试路由器桥接。如果距离较远或需要长期稳定运行，专用无线网桥更合适，因为它可以调整天线方向、选择干扰更少的频段。</p>
+      </section>
+
+      <section class="panel" id="setup">
+        <h2>无线桥接的设置思路与关键步骤</h2>
+        <p>不同品牌的管理界面名称不同，但逻辑基本一致。下面给出的是一套通用的操作顺序，具体菜单名称请以设备实际界面为准。</p>
+        <ol class="steps">
+          <li>
+            <b>确认主网络信息</b>
+            <p>记录主路由器的无线名称、加密方式与密码，并确认其工作频段。桥接两端的频段与加密方式需要匹配。</p>
+          </li>
+          <li>
+            <b>规划副设备的地址</b>
+            <p>为避免与主网络冲突，副设备的管理地址应设置在主网段内但未被占用的位置，或按说明书要求单独规划。</p>
+          </li>
+          <li>
+            <b>关闭副设备的 DHCP 服务</b>
+            <p>在桥接模式下通常只保留主路由器分配地址，副设备关闭 DHCP 可减少地址冲突和终端获取异常。</p>
+          </li>
+          <li>
+            <b>进入桥接或 WDS 设置</b>
+            <p>在无线设置中找到桥接、WDS 或类似选项，扫描并选择主网络的信号，填写对应密码，保存后等待重启。</p>
+          </li>
+          <li>
+            <b>统一无线参数</b>
+            <p>若希望终端在同一网络内漫游，可把无线名称与密码设置为一致；若希望区分，则使用不同名称便于判断连接到了哪一台设备。</p>
+          </li>
+          <li>
+            <b>固定信道</b>
+            <p>桥接链路通常要求两端使用相同信道。自动信道可能在重启后变化，导致桥接断开，因此建议手动固定。</p>
+          </li>
+          <li>
+            <b>验证连通性</b>
+            <p>用终端连接副设备，测试能否获取地址、访问主网络中的设备以及正常上网，并观察延迟与速率是否可接受。</p>
+          </li>
+        </ol>
+        <div class="warn">设置过程中若修改了管理地址，请先记下新地址，否则可能无法再次登录设备管理界面，只能通过复位恢复。</div>
+      </section>
+
+      <section class="panel" id="choose">
+        <h2>设备选型：看这几点比看参数表更有用</h2>
+        <h3>频段与干扰</h3>
+        <p>2.4GHz 穿墙能力强但信道拥挤，5GHz 速率高、干扰少但穿透差。桥接链路若使用 5GHz，通常能获得更稳定的吞吐；若距离远、遮挡多，则可能需要 2.4GHz。部分设备支持专用回程频段，可减少与终端争抢带宽。</p>
+        <h3>天线与方向</h3>
+        <p>全向天线适合近距离、方向不确定的场景；定向天线适合远距离点对点，但需要对准。安装时尽量保持两端之间视距通畅，减少墙体、金属和树木的遮挡。</p>
+        <h3>供电与安装条件</h3>
+        <p>室外网桥需要考虑防水、防雷与供电方式，常见的有 PoE 供电。安装位置应便于后期维护，避免高空作业带来的额外成本。</p>
+        <h3>兼容性</h3>
+        <p>WDS 并非严格统一的标准，不同厂商实现存在差异。若打算混用品牌，建议先查清设备是否明确支持通用 WDS，或直接选择成对出售的网桥套装。</p>
+        <div class="tip">选购时不必追求最高标称速率。桥接链路的实际表现更多取决于距离、遮挡、干扰和两端设备的匹配程度。</div>
+      </section>
+
+      <section class="panel" id="tips">
+        <h2>使用中的注意事项</h2>
+        <ul>
+          <li><strong>带宽会衰减：</strong>无线桥接的链路需要同时承担回程与终端接入，实际可用带宽通常低于理论值，对高码率视频或大文件传输要有预期。</li>
+          <li><strong>延迟会上升：</strong>多跳桥接会逐级累积延迟，实时游戏、视频会议等场景对跳数较敏感。</li>
+          <li><strong>安全设置不可省：</strong>桥接链路同样需要加密，避免被他人接入或抓包。管理密码也应从默认值修改。</li>
+          <li><strong>固件保持更新：</strong>厂商会通过固件修复稳定性与兼容性问题，尤其是老设备在桥接模式下更容易出现异常。</li>
+          <li><strong>留意环路风险：</strong>如果桥接链路与有线链路同时形成回路，可能引发广播风暴，导致网络瘫痪。</li>
+          <li><strong>记录配置：</strong>把信道、地址、密码等关键信息记录下来，日后排查问题会省很多时间。</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="faq">
+        <h2>常见问题</h2>
+
+        <details class="faq-item" open>
+          <summary>桥接之后网速变慢很多，正常吗？</summary>
+          <div class="faq-body">
+            <p>在一定范围内属于正常现象。无线桥接需要把同一段无线资源用于回程和终端接入，速率通常会有明显折损。如果下降幅度远超预期，可以检查信道是否拥挤、两端距离与遮挡是否过大、是否使用了自动信道导致频繁切换，以及设备是否工作在较低速率的标准下。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>不同品牌的路由器可以互相桥接吗？</summary>
+          <div class="faq-body">
+            <p>有可能，但不保证。WDS 的实现在不同厂商之间存在差异，即使菜单里都有该选项，也可能出现能连上却无法正常通信的情况。若必须混用，建议先小范围测试；若追求稳定，优先选择同品牌或成对出售的网桥设备。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>桥接后设备不在同一网段，会影响使用吗？</summary>
+          <div class="faq-body">
+            <p>取决于用途。普通上网、看视频通常不受影响；但局域网打印、文件共享、监控回看、投屏等功能往往需要设备处于同一网段或能互相发现。若这些功能重要，应在设置时确保只由一台设备负责地址分配。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>为什么桥接设置好后过一段时间就断了？</summary>
+          <div class="faq-body">
+            <p>常见原因包括：主路由器信道自动变化、副设备重启后未重新连接、信号强度处于临界值、周围新增干扰源，以及固件稳定性问题。可以把信道固定、适当调整设备位置、缩短距离或更换频段，并检查固件版本。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>桥接和 Mesh 应该怎么选？</summary>
+          <div class="faq-body">
+            <p>如果追求使用简单、终端自动切换节点，Mesh 更合适，但通常需要同品牌设备。如果已有可用路由器、预算有限，或者目标是连通两个独立网段，桥接更灵活。两者也可以结合，例如用无线网桥做回程，再在末端接 Mesh 节点。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>室外远距离桥接需要注意什么？</summary>
+          <div class="faq-body">
+            <p>重点关注视距、天线对准、防雷接地与供电稳定性。距离越远，对天线增益和安装精度的要求越高。建议在正式固定前先临时架设测试信号质量，确认可用后再做永久安装。</p>
+          </div>
+        </details>
+      </section>
+
+    </main>
+
+    <aside class="side">
+      <section class="panel">
+        <h2>本页目录</h2>
+        <ul class="side-nav">
+          <li><a href="#intro">概念入门</a></li>
+          <li><a href="#compare">桥接与中继的区别</a></li>
+          <li><a href="#types">常见实现方式</a></li>
+          <li><a href="#setup">设置思路与步骤</a></li>
+          <li><a href="#choose">设备选型要点</a></li>
+          <li><a href="#tips">使用注意事项</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>相关概念速览</h2>
+        <ul class="term-list">
+          <li><b>SSID</b>：无线网络名称，桥接两端可设为相同或不同。</li>
+          <li><b>信道</b>：无线传输使用的频段位置，桥接两端通常需一致。</li>
+          <li><b>DHCP</b>：自动分配地址的服务，桥接网络中一般只保留一台。</li>
+          <li><b>回程</b>：节点之间传输数据的链路，是带宽消耗的主要来源。</li>
+          <li><b>漫游</b>：终端在多个接入点之间切换而不断开连接。</li>
+          <li><b>PoE</b>：通过网线同时传输数据与电力，常用于室外网桥。</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>排查顺序建议</h2>
+        <ol style="padding-left:1.2em;font-size:14.5px;color:var(--ink-soft);margin:0;">
+          <li>先确认主网络本身正常</li>
+          <li>检查两端信道与加密方式是否一致</li>
+          <li>查看信号强度与干扰情况</li>
+          <li>确认地址分配没有冲突</li>
+          <li>重启设备并观察是否复现</li>
+          <li>必要时恢复出厂重新配置</li>
+        </ol>
+      </section>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h3>无线网络桥接指南</h3>
+      <p>本页整理无线网络桥接的基本概念、常见实现方式、通用设置思路与排查方向，供家庭与小型办公网络环境参考。具体设备的菜单名称与操作细节，请以厂商说明书为准。</p>
+    </div>
+    <div>
+      <h3>内容导航</h3>
+      <ul>
+        <li><a href="#intro">概念入门</a></li>
+        <li><a href="#compare">桥接与中继</a></li>
+        <li><a href="#types">常见方式</a></li>
+        <li><a href="#setup">设置步骤</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>延伸阅读</h3>
+      <ul>
+        <li><a href="#choose">设备选型</a></li>
+        <li><a href="#tips">注意事项</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    网络配置涉及具体环境差异，动手前请先备份现有设置，避免影响正常使用。
+  </div>
+</footer>
+
+<script>
+  // 目录平滑滚动（对不支持 scroll-behavior 的浏览器做兜底）
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 12;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  // 手风琴：同一时间只展开一个问答
+  var faqs = document.querySelectorAll('.faq-item');
+  faqs.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (item.open) {
+        faqs.forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+  </html>
