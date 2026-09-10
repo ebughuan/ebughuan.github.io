@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小马可-角色资料、出场作品与相关资讯介绍</title>
+<meta name="description" content="小马可角色资料专题，整理小马可的基本设定、出场作品、角色关系、常见问题与相关讨论，帮助你快速了解这一动漫角色。">
+<meta name="keywords" content="小马可,小马可角色,小马可资料,小马可出场作品,小马可介绍">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --ink:#1c2430;
+    --ink-soft:#4a5568;
+    --line:#e2e8f0;
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --brand:#2f6fed;
+    --brand-deep:#1d4fbf;
+    --accent:#ff8a3d;
+    --accent-soft:#fff1e6;
+    --radius:14px;
+    --shadow:0 6px 24px rgba(28,36,48,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ====== 页眉 ====== */
+  .site-header{
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:19px;
+    letter-spacing:.5px;
+  }
+  .logo-mark{
+    width:36px;height:36px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--brand),#63a4ff);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:800;
+    box-shadow:0 4px 12px rgba(47,111,237,.28);
+  }
+  .logo small{
+    display:block;
+    font-size:11px;
+    font-weight:500;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+  }
+  .main-nav{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .main-nav a{
+    padding:8px 14px;
+    border-radius:9px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-weight:500;
+    transition:.2s;
+  }
+  .main-nav a:hover{background:#eef4ff;color:var(--brand-deep);}
+
+  /* ====== 首屏 ====== */
+  .hero{
+    background:
+      radial-gradient(900px 340px at 88% -10%,rgba(255,138,61,.16),transparent 70%),
+      linear-gradient(160deg,#eef4ff 0%,#f7faff 55%,#ffffff 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:52px 20px 46px;
+    display:grid;
+    grid-template-columns:1.35fr .9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-tag{
+    display:inline-block;
+    background:var(--accent-soft);
+    color:#c25a12;
+    font-size:13px;
+    font-weight:700;
+    padding:5px 13px;
+    border-radius:999px;
+    margin-bottom:16px;
+    letter-spacing:.5px;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.2vw,42px);
+    line-height:1.28;
+    letter-spacing:-.5px;
+    margin-bottom:16px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--brand);
+  }
+  .hero p.lead{
+    color:var(--ink-soft);
+    font-size:16.5px;
+    max-width:640px;
+    margin-bottom:24px;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:11px 22px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    transition:.2s;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--brand);
+    color:#fff;
+    box-shadow:0 6px 16px rgba(47,111,237,.26);
+  }
+  .btn-primary:hover{background:var(--brand-deep);}
+  .btn-ghost{
+    background:#fff;
+    border-color:var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand-deep);}
+
+  .hero-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .hero-card h2{
+    font-size:15px;
+    letter-spacing:1px;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .fact-list{list-style:none;}
+  .fact-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:14.5px;
+  }
+  .fact-list li:last-child{border-bottom:none;}
+  .fact-list .k{color:var(--ink-soft);}
+  .fact-list .v{font-weight:600;text-align:right;}
+
+  /* ====== 通用区块 ====== */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+  section.block{padding:52px 0;}
+  section.block.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{margin-bottom:28px;}
+  .sec-head h2{
+    font-size:24px;
+    letter-spacing:-.3px;
+    margin-bottom:8px;
+  }
+  .sec-head p{color:var(--ink-soft);font-size:15px;max-width:760px;}
+
+  /* ====== 简介双栏 ====== */
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:36px;
+    align-items:start;
+  }
+  .intro-grid p{margin-bottom:14px;color:#2c3644;}
+  .intro-grid p:last-child{margin-bottom:0;}
+  .side-note{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:12px;
+    padding:20px 22px;
+    box-shadow:var(--shadow);
+  }
+  .side-note h3{font-size:16px;margin-bottom:10px;}
+  .side-note ul{list-style:none;font-size:14.5px;color:var(--ink-soft);}
+  .side-note li{padding:7px 0 7px 18px;position:relative;}
+  .side-note li::before{
+    content:"";
+    position:absolute;left:0;top:15px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--brand);
+  }
+
+  /* ====== 作品卡片 ====== */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:20px;
+  }
+  .work-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+    transition:.22s;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .work-card:hover{transform:translateY(-4px);border-color:#c8dbff;}
+  .work-card .badge{
+    align-self:flex-start;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+    background:#eef4ff;
+    color:var(--brand-deep);
+  }
+  .work-card h3{font-size:17px;}
+  .work-card p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ====== 关系列表 ====== */
+  .rel-list{display:grid;gap:14px;}
+  .rel-item{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:16px;
+    align-items:baseline;
+  }
+  .rel-item .rel-name{
+    font-weight:700;
+    color:var(--brand-deep);
+    font-size:15.5px;
+  }
+  .rel-item .rel-desc{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ====== 时间线 ====== */
+  .timeline{
+    position:relative;
+    padding-left:26px;
+    border-left:2px solid #d9e4f7;
+    display:grid;
+    gap:24px;
+  }
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-34px;top:6px;
+    width:12px;height:12px;
+    border-radius:50%;
+    background:#fff;
+    border:3px solid var(--brand);
+  }
+  .tl-item h3{font-size:16px;margin-bottom:5px;}
+  .tl-item p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ====== FAQ ====== */
+  .faq{display:grid;gap:12px;}
+  details{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 20px;
+    transition:.2s;
+  }
+  details[open]{border-color:#c8dbff;box-shadow:var(--shadow);}
+  summary{
+    cursor:pointer;
+    font-weight:600;
+    font-size:15.5px;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";
+    color:var(--brand);
+    font-size:20px;
+    font-weight:700;
+    line-height:1;
+  }
+  details[open] summary::after{content:"–";}
+  details p{
+    margin-top:12px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+
+  /* ====== 提示条 ====== */
+  .notice{
+    background:#fff8f1;
+    border:1px solid #ffe0c4;
+    border-radius:12px;
+    padding:18px 22px;
+    font-size:14.5px;
+    color:#8a4a12;
+  }
+  .notice strong{color:#c25a12;}
+
+  /* ====== 页脚 ====== */
+  .site-footer{
+    background:#1c2430;
+    color:#a9b4c4;
+    padding:44px 0 26px;
+    font-size:14px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr 1fr;
+    gap:30px;
+    padding-bottom:26px;
+    border-bottom:1px solid #2c3644;
+  }
+  .footer-grid h3{
+    color:#fff;
+    font-size:15px;
+    margin-bottom:12px;
+  }
+  .footer-grid p{line-height:1.8;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{padding:5px 0;}
+  .footer-grid a:hover{color:#fff;}
+  .copyright{
+    padding-top:20px;
+    text-align:center;
+    font-size:13px;
+    color:#7d8899;
+  }
+
+  /* ====== 响应式 ====== */
+  @media (max-width:960px){
+    .hero-inner{grid-template-columns:1fr;gap:28px;padding-top:40px;}
+    .intro-grid{grid-template-columns:1fr;gap:24px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    body{font-size:15.5px;}
+    .header-inner{flex-direction:column;align-items:flex-start;gap:10px;}
+    .main-nav{gap:2px;}
+    .main-nav a{padding:6px 10px;font-size:14px;}
+    .hero-inner{padding:32px 16px 34px;}
+    section.block{padding:38px 0;}
+    .rel-item{grid-template-columns:1fr;gap:4px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .sec-head h2{font-size:21px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-mark">马</span>
+      <span>小马可资料站
+        <small>角色 · 作品 · 讨论</small>
+      </span>
+    </div>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#intro">角色简介</a>
+      <a href="#works">出场作品</a>
+      <a href="#relations">角色关系</a>
+      <a href="#timeline">出场脉络</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag">动漫角色资料整理</span>
+        <h1>小马可：从角色设定到出场作品，<em>一次看懂</em></h1>
+        <p class="lead">
+          如果你是在动画或漫画里第一次看到“小马可”这个名字，想知道他是谁、出现在哪些作品里、和哪些角色关系密切，这个页面把能确认的信息按主题整理在一起，方便你按需查阅，也方便进一步搜索。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#intro">先看角色简介</a>
+          <a class="btn btn-ghost" href="#works">查看出场作品</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>资料速览</h2>
+        <ul class="fact-list">
+          <li><span class="k">名称</span><span class="v">小马可</span></li>
+          <li><span class="k">类型</span><span class="v">动漫角色</span></li>
+          <li><span class="k">身份</span><span class="v">随作品设定而变</span></li>
+          <li><span class="k">活跃领域</span><span class="v">动画 / 漫画 / 同人讨论</span></li>
+          <li><span class="k">资料状态</span><span class="v">以官方设定为准</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 角色简介 -->
+  <section class="block" id="intro">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>小马可是谁</h2>
+        <p>先弄清楚名称指向，再决定要不要深入追作品、追剧情。</p>
+      </div>
+      <div class="intro-grid">
+        <div>
+          <p>
+            “小马可”是中文动漫讨论圈里常见的一种称呼方式：把角色原名中的“马可”加上“小”字，用来表示亲昵，也用来和同名或相似名字的角色区分。它既可能指向某部具体作品里一个正式登场的角色，也可能是观众对某个角色的习惯性叫法。
+          </p>
+          <p>
+            正因为如此，搜索“小马可”时，不同的人往往带着不同的目的：有人想确认这个角色出自哪部动画，有人想找他的剧情线，也有人只是想看看有没有同好整理的资料汇总。这个页面的定位就是把这些常见需求集中起来，按“是谁—出自哪里—和谁有关—有哪些疑问”的顺序展开。
+          </p>
+          <p>
+            需要说明的是，动漫角色的设定会随着作品更新、版本差异、改编程度而发生变化。本页只做通用性的资料梳理与检索指引，涉及具体剧情细节、配音阵容、播出时间等信息时，建议以作品官方渠道和正版平台公布的内容为准。
+          </p>
+          <p>
+            如果你已经确定自己找的是某一部特定作品里的小马可，可以带着“作品名 + 小马可”一起搜索，通常能更快定位到角色条目、剧情分集和相关讨论帖。
+          </p>
+        </div>
+        <aside class="side-note">
+          <h3>查资料时的三个建议</h3>
+          <ul>
+            <li>先用“作品名 + 角色名”缩小范围，避免同名混淆。</li>
+            <li>优先看官方设定集、正版平台的角色页。</li>
+            <li>剧情细节以自己实际观看的版本为准。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 出场作品 -->
+  <section class="block alt" id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>小马可可能出现的作品类型</h2>
+        <p>不同来源的作品里，这个称呼对应的角色定位差别很大，下面按常见类型分类说明。</p>
+      </div>
+      <div class="work-grid">
+        <article class="work-card">
+          <span class="badge">电视动画</span>
+          <h3>长篇动画中的配角</h3>
+          <p>在连载型动画里，带“小”字的昵称常出现在配角或主角团成员身上，戏份随篇章推进而增加，需要按分集梳理。</p>
+        </article>
+        <article class="work-card">
+          <span class="badge">漫画原作</span>
+          <h3>漫画中的登场角色</h3>
+          <p>漫画原作的登场节奏与动画改编往往不一致，同一个角色在漫画中的出场时间点可能更早或更晚。</p>
+        </article>
+        <article class="work-card">
+          <span class="badge">剧场版</span>
+          <h3>剧场版或特别篇</h3>
+          <p>部分角色只在剧场版、OVA 或特别篇中集中出现，与主线剧情关联度不一，需要单独确认。</p>
+        </article>
+        <article class="work-card">
+          <span class="badge">游戏改编</span>
+          <h3>改编游戏与联动</h3>
+          <p>动画改编游戏、联动活动中也可能出现同名角色，但设定可能经过调整，与动画原作不完全一致。</p>
+        </article>
+        <article class="work-card">
+          <span class="badge">同人创作</span>
+          <h3>同人作品中的再演绎</h3>
+          <p>同人漫画、同人小说里的“小马可”可能是粉丝对角色的二次命名，与官方设定无关，需注意区分。</p>
+        </article>
+        <article class="work-card">
+          <span class="badge">配音与译名</span>
+          <h3>译名差异带来的混淆</h3>
+          <p>不同地区译名、字幕组译法可能不同，同一个角色会有多种中文称呼，这也是搜索时容易混淆的原因之一。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 角色关系 -->
+  <section class="block" id="relations">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>围绕角色常见的几类关系</h2>
+        <p>了解一个角色，往往从他和别人的关系开始。以下按关系类型做通用梳理。</p>
+      </div>
+      <div class="rel-list">
+        <div class="rel-item">
+          <span class="rel-name">同伴 / 队友</span>
+          <span class="rel-desc">在冒险、竞技或日常题材中，角色通常有固定的同伴圈，互动方式决定了角色的性格呈现。</span>
+        </div>
+        <div class="rel-item">
+          <span class="rel-name">家人 / 亲属</span>
+          <span class="rel-desc">部分角色的成长线与其家庭背景紧密相关，这类关系常用来解释角色的动机与行为逻辑。</span>
+        </div>
+        <div class="rel-item">
+          <span class="rel-name">对手 / 竞争者</span>
+          <span class="rel-desc">对手关系是推动剧情的重要力量，角色的能力上限和性格侧面常在与对手的交锋中体现。</span>
+        </div>
+        <div class="rel-item">
+          <span class="rel-name">师长 / 引导者</span>
+          <span class="rel-desc">如果角色处于成长阶段，往往会有引导者的存在，帮助角色完成阶段性转变。</span>
+        </div>
+        <div class="rel-item">
+          <span class="rel-name">观众视角</span>
+          <span class="rel-desc">粉丝对角色的称呼、二次命名和讨论方式，本身也构成角色在圈层中的一部分“关系网络”。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 出场脉络 -->
+  <section class="block alt" id="timeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>梳理角色出场脉络的方法</h2>
+        <p>与其零散地看片段，不如按下面这个顺序建立自己的角色档案。</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>第一步：确认作品归属</h3>
+          <p>先锁定角色出自哪一部作品，避免把不同作品里的同名角色混在一起。作品名是最有效的筛选条件。</p>
+        </div>
+        <div class="tl-item">
+          <h3>第二步：记录首次登场</h3>
+          <p>找到角色第一次出现的集数或章节，从这里开始看，能更完整地理解后续行为的前因。</p>
+        </div>
+        <div class="tl-item">
+          <h3>第三步：标出关键剧情节点</h3>
+          <p>把角色发生明显转变、能力变化或关系变化的情节单独记下来，形成一条清晰的角色线。</p>
+        </div>
+        <div class="tl-item">
+          <h3>第四步：对照不同版本</h3>
+          <p>如果同时存在漫画、动画、剧场版等版本，可以对照差异，理解改编对角色塑造的影响。</p>
+        </div>
+        <div class="tl-item">
+          <h3>第五步：补充官方资料</h3>
+          <p>用官方角色介绍、设定集或正版平台信息补全细节，减少依赖二手转述带来的误差。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注意事项 -->
+  <section class="block">
+    <div class="wrap">
+      <div class="notice">
+        <strong>信息提示：</strong>动漫角色的译名、设定与剧情在不同地区、不同版本之间可能存在差异。本页内容为通用性整理，不构成对任何具体作品剧情、播出安排或官方设定的最终说明。如涉及具体细节，请以作品官方发布与正版播出平台的信息为准。
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>关于小马可的常见问题</h2>
+        <p>把搜索时最常出现的几个疑问集中回答一下。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>“小马可”一定是某个角色的官方名字吗？</summary>
+          <p>不一定。“小马可”更常见的是中文观众对角色的一种习惯性称呼，带有亲昵意味。它可能对应官方译名，也可能是粉丝约定俗成的叫法，具体要看作品本身。</p>
+        </details>
+        <details>
+          <summary>为什么搜“小马可”会出现不同作品的角色？</summary>
+          <p>因为“马可”本身是一个在不同作品中被反复使用的名字，加上“小”字后称呼更容易重叠。搜索时建议同时带上作品名或年份，能明显提高准确度。</p>
+        </details>
+        <details>
+          <summary>想找小马可的完整出场集数，应该怎么做？</summary>
+          <p>可以按“作品名 + 角色名 + 出场集数”的思路检索，或者直接查阅正版平台的角色介绍页与分集简介。粉丝整理的出场表也可参考，但需注意版本差异。</p>
+        </details>
+        <details>
+          <summary>漫画和动画里的小马可设定会不一样吗？</summary>
+          <p>有可能。改编作品出于节奏和篇幅的考虑，常会对角色的登场时间、戏份比重甚至性格细节做出调整，这是比较普遍的现象。</p>
+        </details>
+        <details>
+          <summary>同人作品里的小马可能当作官方设定吗？</summary>
+          <p>不能。同人创作属于粉丝再演绎，与官方设定是两套体系。阅读时可以欣赏，但不宜把同人内容当作官方资料引用。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>小马可资料站</h3>
+        <p>一个围绕“小马可”这一角色称呼整理的资料型页面，帮助动漫观众快速了解角色指向、出场作品与常见疑问，内容以通用梳理和检索指引为主。</p>
+      </div>
+      <div>
+        <h3>页面导航</h3>
+        <ul>
+          <li><a href="#intro">角色简介</a></li>
+          <li><a href="#works">出场作品</a></li>
+          <li><a href="#relations">角色关系</a></li>
+          <li><a href="#timeline">出场脉络</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>查阅提示</h3>
+        <ul>
+          <li>优先参考官方与正版渠道</li>
+          <li>注意不同版本译名差异</li>
+          <li>区分官方设定与同人内容</li>
+          <li>剧情细节以实际观看为准</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">本站为角色资料整理页面，内容仅供查阅参考，相关作品版权归原权利人所有。</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var links = document.querySelectorAll('.main-nav a[href^="#"], .hero-actions a[href^="#"]');
+    links.forEach(function(link){
+      link.addEventListener('click', function(e){
+        var id = this.getAttribute('href');
+        var target = document.querySelector(id);
+        if(target){
+          e.preventDefault();
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({top: top, behavior: 'smooth'});
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+  </html>
