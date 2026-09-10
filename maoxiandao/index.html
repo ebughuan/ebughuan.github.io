@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冒险岛浴火重生船长-职业定位、技能加点与玩法攻略指南</title>
+<meta name="description" content="冒险岛浴火重生船长专题页，整理该职业的定位特点、核心技能、加点思路、装备选择、刷图与打王玩法，以及新手常见问题，帮助玩家快速上手这一远程召唤型职业。">
+<meta name="keywords" content="冒险岛浴火重生船长,浴火重生船长,冒险岛船长,船长技能加点,船长攻略">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+  :root{
+    --deep:#0f1b2d;
+    --deep2:#16273f;
+    --sea:#1f6f8b;
+    --sea-light:#2f9bbd;
+    --flame:#ff7a33;
+    --flame-soft:#ffb066;
+    --sand:#f4efe6;
+    --ink:#22303f;
+    --ink-soft:#5a6b7c;
+    --line:#dfe6ee;
+    --white:#ffffff;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(15,27,45,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,27,45,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:13px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand-mark{
+    width:40px;height:40px;border-radius:11px;flex:0 0 auto;
+    background:linear-gradient(140deg,var(--flame),#ff4d2e 60%,var(--sea-light));
+    display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:17px;
+    box-shadow:0 6px 16px rgba(255,90,40,.35);
+  }
+  .brand-text b{color:#fff;font-size:17px;letter-spacing:.5px;display:block;line-height:1.2;}
+  .brand-text span{color:#8fa6bd;font-size:12px;letter-spacing:1.5px;}
+  .nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .nav a{
+    color:#c9d8e6;font-size:14px;padding:8px 13px;border-radius:9px;
+    transition:.22s;
+  }
+  .nav a:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 420px at 82% -10%,rgba(255,122,51,.30),transparent 62%),
+      radial-gradient(700px 420px at 8% 110%,rgba(47,155,189,.32),transparent 60%),
+      linear-gradient(160deg,#0f1b2d,#16273f 55%,#1b3350);
+    color:#fff;
+    padding:64px 0 58px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.35fr .9fr;gap:40px;align-items:center;
+  }
+  .tagline{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.5px;color:#ffd7b8;
+    background:rgba(255,122,51,.16);
+    border:1px solid rgba(255,140,70,.4);
+    padding:5px 13px;border-radius:999px;margin-bottom:18px;
+  }
+  .tagline i{width:7px;height:7px;border-radius:50%;background:var(--flame);display:block;}
+  .hero h1{
+    font-size:clamp(26px,4vw,40px);line-height:1.3;letter-spacing:.5px;
+    margin-bottom:16px;font-weight:800;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg,#ffb066,#ff7a33);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{color:#c4d5e5;font-size:15.5px;max-width:640px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+  .btn{
+    display:inline-block;padding:11px 22px;border-radius:10px;font-size:14.5px;
+    font-weight:600;transition:.22s;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,var(--flame),#ff5c2b);
+    color:#fff;box-shadow:0 10px 24px rgba(255,90,40,.32);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(255,90,40,.42);}
+  .btn-ghost{border-color:rgba(255,255,255,.35);color:#e6eef6;}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);}
+  .hero-card{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius);
+    padding:22px;
+    backdrop-filter:blur(4px);
+  }
+  .hero-card h2{font-size:15px;color:#ffd7b8;margin-bottom:14px;letter-spacing:1px;font-weight:700;}
+  .stat-list{list-style:none;display:grid;gap:12px;}
+  .stat-list li{
+    display:flex;justify-content:space-between;gap:12px;
+    font-size:13.5px;color:#c9d8e6;
+    padding-bottom:11px;border-bottom:1px dashed rgba(255,255,255,.14);
+  }
+  .stat-list li:last-child{border-bottom:0;padding-bottom:0;}
+  .stat-list b{color:#fff;font-weight:600;text-align:right;}
+
+  /* ---------- Section base ---------- */
+  section{padding:56px 0;}
+  .sec-head{margin-bottom:30px;max-width:760px;}
+  .sec-head .kicker{
+    font-size:12.5px;letter-spacing:2px;color:var(--flame);
+    font-weight:700;text-transform:uppercase;margin-bottom:8px;display:block;
+  }
+  .sec-head h2{font-size:clamp(20px,2.6vw,27px);line-height:1.35;color:var(--deep);}
+  .sec-head p{color:var(--ink-soft);font-size:14.5px;margin-top:10px;}
+
+  /* ---------- Intro / overview ---------- */
+  .overview{background:var(--white);}
+  .ov-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:34px;align-items:start;}
+  .prose p{margin-bottom:15px;font-size:15px;color:#33465a;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose strong{color:var(--deep);}
+  .fact-box{
+    background:linear-gradient(160deg,#f7fafc,#eef4f8);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;
+  }
+  .fact-box h3{font-size:15px;color:var(--deep);margin-bottom:14px;}
+  .fact-box dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;font-size:13.5px;}
+  .fact-box dt{color:var(--ink-soft);white-space:nowrap;}
+  .fact-box dd{color:var(--ink);font-weight:600;}
+
+  /* ---------- Skill cards ---------- */
+  .skills{background:linear-gradient(180deg,#f4efe6,#fbf8f3);}
+  .card-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px;
+  }
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.25s;position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--flame),var(--sea-light));
+    transform:scaleX(0);transform-origin:left;transition:.3s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .card:hover::before{transform:scaleX(1);}
+  .card .ico{
+    width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+    font-size:17px;font-weight:800;color:#fff;margin-bottom:14px;
+    background:linear-gradient(135deg,var(--sea),var(--sea-light));
+  }
+  .card:nth-child(even) .ico{background:linear-gradient(135deg,var(--flame),#ff5c2b);}
+  .card h3{font-size:16px;color:var(--deep);margin-bottom:9px;}
+  .card p{font-size:14px;color:var(--ink-soft);}
+  .card ul{margin-top:10px;padding-left:17px;font-size:13.5px;color:var(--ink-soft);}
+  .card ul li{margin-bottom:5px;}
+
+  /* ---------- Build table ---------- */
+  .build{background:var(--white);}
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
+  table{width:100%;border-collapse:collapse;min-width:600px;font-size:14px;}
+  thead th{
+    background:var(--deep);color:#fff;text-align:left;padding:13px 16px;
+    font-weight:600;font-size:13.5px;letter-spacing:.5px;white-space:nowrap;
+  }
+  tbody td{padding:13px 16px;border-top:1px solid var(--line);color:#3b4d60;vertical-align:top;}
+  tbody tr:nth-child(even){background:#fafcfd;}
+  tbody td:first-child{font-weight:600;color:var(--deep);white-space:nowrap;}
+  .note{
+    margin-top:16px;font-size:13.5px;color:var(--ink-soft);
+    background:#f4f9fc;border-left:3px solid var(--sea-light);
+    padding:12px 16px;border-radius:0 8px 8px 0;
+  }
+
+  /* ---------- Play flow ---------- */
+  .play{background:linear-gradient(180deg,#fbf8f3,#f4efe6);}
+  .steps{display:grid;gap:16px;}
+  .step{
+    display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .step .num{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    font-weight:800;color:#fff;font-size:16px;
+    background:linear-gradient(135deg,var(--deep2),var(--sea));
+  }
+  .step h3{font-size:16px;color:var(--deep);margin-bottom:7px;}
+  .step p{font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- Gear / aside ---------- */
+  .gear{background:var(--white);}
+  .gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .panel{
+    border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+    background:linear-gradient(160deg,#ffffff,#f7fbfd);
+  }
+  .panel h3{font-size:16.5px;color:var(--deep);margin-bottom:14px;display:flex;align-items:center;gap:9px;}
+  .panel h3 span{
+    width:6px;height:18px;border-radius:3px;display:block;
+    background:linear-gradient(180deg,var(--flame),var(--sea-light));
+  }
+  .panel ul{list-style:none;display:grid;gap:11px;}
+  .panel ul li{
+    font-size:14px;color:#3b4d60;padding-left:20px;position:relative;
+  }
+  .panel ul li::before{
+    content:"";position:absolute;left:0;top:9px;width:8px;height:8px;
+    border-radius:2px;background:var(--sea-light);transform:rotate(45deg);
+  }
+  .panel ul li b{color:var(--deep);}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:linear-gradient(180deg,#f4efe6,#fbf8f3);}
+  .faq-list{display:grid;gap:12px;max-width:900px;}
+  details{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;
+    padding:0 20px;transition:.2s;
+  }
+  details[open]{border-color:var(--sea-light);box-shadow:0 6px 20px rgba(31,111,139,.10);}
+  summary{
+    cursor:pointer;list-style:none;padding:16px 0;font-size:15px;font-weight:600;
+    color:var(--deep);display:flex;justify-content:space-between;gap:14px;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";font-size:19px;color:var(--flame);font-weight:400;flex:0 0 auto;
+    transition:.2s;
+  }
+  details[open] summary::after{content:"–";}
+  details p{font-size:14px;color:var(--ink-soft);padding:0 0 17px;}
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    background:var(--deep);color:#93a8bd;padding:44px 0 26px;font-size:13.5px;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px;padding-bottom:26px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .site-footer h4{color:#fff;font-size:14.5px;margin-bottom:13px;font-weight:600;}
+  .site-footer p{color:#8fa6bd;line-height:1.8;}
+  .site-footer ul{list-style:none;display:grid;gap:9px;}
+  .site-footer ul a{color:#93a8bd;transition:.2s;}
+  .site-footer ul a:hover{color:var(--flame-soft);}
+  .copyright{padding-top:18px;text-align:center;color:#6d8299;font-size:12.5px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:28px;}
+    .ov-grid{grid-template-columns:1fr;}
+    .gear-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    section{padding:40px 0;}
+    .hero{padding:44px 0 40px;}
+    .header-inner{gap:10px;}
+    .nav a{padding:7px 10px;font-size:13px;}
+    .step{grid-template-columns:1fr;gap:12px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-actions .btn{flex:1 1 auto;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <div class="brand-mark">船</div>
+      <div class="brand-text">
+        <b>浴火重生船长</b>
+        <span>冒险岛 · 职业专题</span>
+      </div>
+    </div>
+    <nav class="nav" aria-label="主导航">
+      <a href="#intro">职业概览</a>
+      <a href="#skills">核心技能</a>
+      <a href="#build">加点思路</a>
+      <a href="#play">玩法流程</a>
+      <a href="#gear">装备与配置</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tagline"><i></i>海盗系 · 远程召唤输出</span>
+        <h1>冒险岛<em>浴火重生船长</em>：远程召唤与炮火输出的海盗职业</h1>
+        <p class="lead">
+          船长是冒险岛海盗职业分支中以枪械和召唤物为主要手段的远程职业，依靠船员、召唤兽与持续炮火在中远距离制造稳定伤害。
+          本页整理该职业的定位、技能体系、加点方向、刷图与打王思路，以及新手容易踩坑的细节，方便你按自己的节奏规划养成。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#skills">查看核心技能</a>
+          <a class="btn btn-ghost" href="#faq">新手常见问题</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>职业速览</h2>
+        <ul class="stat-list">
+          <li><span>职业分支</span><b>海盗系 · 枪械方向</b></li>
+          <li><span>主要输出距离</span><b>中远程</b></li>
+          <li><span>核心机制</span><b>召唤物 + 持续炮火</b></li>
+          <li><span>操作难度</span><b>中等，需管理召唤物</b></li>
+          <li><span>适合人群</span><b>喜欢挂机式站位输出的玩家</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="overview" id="intro">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">职业概览</span>
+        <h2>船长是什么样的职业，值不值得练</h2>
+        <p>先弄清楚它的输出方式和节奏，再决定是否把它作为主力或副号培养。</p>
+      </div>
+      <div class="ov-grid">
+        <div class="prose">
+          <p>
+            船长属于海盗职业群中的远程分支，与近身肉搏的拳手类海盗不同，它主要依靠枪械射击、召唤船员和召唤兽来制造伤害。
+            这种设计让船长的输出位置相对自由：可以在安全距离持续开火，同时让召唤物在前方承担部分火力，形成“自己在后方、帮手在前排”的战斗节奏。
+          </p>
+          <p>
+            从养成角度看，<strong>船长的优势在于输出的持续性</strong>。它的伤害不依赖单次爆发的极限数值，而是通过多段射击与召唤物叠加，在较长时间内保持稳定输出。
+            这意味着在需要长时间消耗的战斗场景里，船长往往能保持相对均衡的表现。
+          </p>
+          <p>
+            相对地，<strong>它的短板也比较明显</strong>：召唤物需要管理和重新召唤，输出节奏受站位影响，部分技能存在冷却或持续时间限制。
+            如果习惯站桩不动、不关注召唤物状态，实际伤害会明显低于理论水平。因此船长更适合愿意花一点心思管理技能循环的玩家。
+          </p>
+          <p>
+            关于“浴火重生”这一说法，通常与职业的转职阶段或特定版本改动相关。不同服务器、不同版本的技能名称与数值可能存在差异，
+            建议以你所游玩版本的官方说明和游戏内技能面板为准，本页内容侧重通用的机制理解与养成思路。
+          </p>
+        </div>
+        <div class="fact-box">
+          <h3>快速定位</h3>
+          <dl>
+            <dt>输出类型</dt><dd>远程物理 / 召唤辅助</dd>
+            <dt>主要武器</dt><dd>枪械类武器</dd>
+            <dt>生存方式</dt><dd>拉开距离 + 走位规避</dd>
+            <dt>刷图表现</dt><dd>依赖范围技能与召唤物覆盖</dd>
+            <dt>打王表现</dt><dd>持续输出稳定，需注意站位</dd>
+            <dt>上手门槛</dt><dd>中等</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">技能体系</span>
+        <h2>船长的核心技能方向</h2>
+        <p>船长的技能大致可以分成几个功能模块，理解模块比死记技能名更重要。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="ico">炮</div>
+          <h3>主攻射击技能</h3>
+          <p>负责日常输出的基础手段，通常是你按住不放、持续造成伤害的那一类技能。</p>
+          <ul>
+            <li>优先提升等级，保证基础伤害系数</li>
+            <li>关注攻击段数与攻击速度</li>
+            <li>配合增益后输出提升明显</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico">召</div>
+          <h3>召唤物与船员</h3>
+          <p>船长最具辨识度的机制，召唤出的单位会自动攻击，等于额外多了一份输出。</p>
+          <ul>
+            <li>注意召唤物的持续时间与冷却</li>
+            <li>及时补召，避免出现空档</li>
+            <li>召唤物位置会影响实际命中</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico">范</div>
+          <h3>范围清怪技能</h3>
+          <p>用于刷图时覆盖多个目标，提升单位时间内的击杀效率。</p>
+          <ul>
+            <li>关注技能覆盖范围与冷却</li>
+            <li>配合地形选择站位更高效</li>
+            <li>与召唤物叠加可形成持续清场</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico">增</div>
+          <h3>增益与被动</h3>
+          <p>提供攻击力、暴击、攻速等加成，是拉开伤害差距的关键部分。</p>
+          <ul>
+            <li>优先点满常用增益技能</li>
+            <li>被动技能通常收益稳定</li>
+            <li>注意增益的持续时间与刷新</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico">移</div>
+          <h3>位移与生存</h3>
+          <p>帮助船长调整站位、规避伤害，是远程职业保持输出环境的基础。</p>
+          <ul>
+            <li>熟悉位移距离与冷却</li>
+            <li>预留位移用于躲避关键技能</li>
+            <li>不要把所有位移都用来赶路</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="ico">爆</div>
+          <h3>爆发与终结技能</h3>
+          <p>在短时间内打出高额伤害，通常配合增益窗口使用。</p>
+          <ul>
+            <li>与增益技能同步释放</li>
+            <li>提前规划冷却，避免空放</li>
+            <li>打王时留给关键阶段</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build -->
+  <section class="build" id="build">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">加点思路</span>
+        <h2>技能加点与养成优先级</h2>
+        <p>下面是通用的加点优先级思路，具体点数分配请结合你所玩版本的技能上限调整。</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>优先级</th>
+              <th>技能类别</th>
+              <th>建议</th>
+              <th>原因</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>第一优先</td>
+              <td>主攻射击技能</td>
+              <td>尽早提升等级</td>
+              <td>决定日常输出的基础数值，收益最直接</td>
+            </tr>
+            <tr>
+              <td>第一优先</td>
+              <td>核心增益与被动</td>
+              <td>优先点满</td>
+              <td>加成作用于所有输出手段，性价比高</td>
+            </tr>
+            <tr>
+              <td>第二优先</td>
+              <td>召唤物技能</td>
+              <td>保证持续时间与伤害</td>
+              <td>召唤物是船长的重要输出来源</td>
+            </tr>
+            <tr>
+              <td>第二优先</td>
+              <td>范围清怪技能</td>
+              <td>按刷图需求投入</td>
+              <td>影响练级与日常任务的效率</td>
+            </tr>
+            <tr>
+              <td>第三优先</td>
+              <td>位移与辅助技能</td>
+              <td>够用即可</td>
+              <td>主要服务于生存和走位，不必过度投入</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">
+        提示：不同版本对技能上限、技能书与前置条件的要求不同。加点前建议先确认技能是否存在前置、是否有免费洗点机会，避免把点数投入后难以调整。
+      </p>
+    </div>
+  </section>
+
+  <!-- Play -->
+  <section class="play" id="play">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">玩法流程</span>
+        <h2>从练级到打王的实际节奏</h2>
+        <p>把技能拆成一套可执行的循环，比单纯堆数值更容易看到提升。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>练级阶段：先解决清怪效率</h3>
+            <p>
+              前期以快速升级为主，优先使用范围技能配合召唤物清场。选择怪物密度较高、地形相对平坦的地图，站定后让召唤物与范围技能同时工作，
+              减少来回跑动的时间。这个阶段不必过分追求单点伤害，效率才是关键。
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>日常任务：固定循环更省心</h3>
+            <p>
+              日常内容通常重复度高，建议固定一套操作顺序：先开增益，再放召唤物，然后进入主攻技能循环。
+              形成习惯后，即使注意力分散也不容易漏掉关键增益，整体效率更稳定。
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>打王阶段：站位与召唤物管理</h3>
+            <p>
+              面对首领时，船长需要在输出与生存之间找平衡。保持中远距离，利用位移规避范围技能，
+              同时留意召唤物是否还在场。召唤物消失后输出会明显下降，及时补召是维持伤害的关键。
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div>
+            <h3>爆发窗口：增益与终结技能同步</h3>
+            <p>
+              当增益技能就绪时，集中释放爆发类技能，把高伤害技能放在加成最高的时间段内。
+              如果冷却时间较长，可以提前规划，避免在首领进入关键阶段时技能还在冷却。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gear -->
+  <section class="gear" id="gear">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">装备与配置</span>
+        <h2>属性方向与配置取舍</h2>
+        <p>船长作为物理远程职业，属性与潜能的选择方向相对明确，但仍需结合自身预算。</p>
+      </div>
+      <div class="gear-grid">
+        <div class="panel">
+          <h3><span></span>属性与潜能方向</h3>
+          <ul>
+            <li><b>主属性：</b>围绕职业对应的物理主属性堆叠，优先保证基础面板。</li>
+            <li><b>攻击力与伤害：</b>对整体输出提升直接，是常见的优先方向。</li>
+            <li><b>暴击率与暴击伤害：</b>在暴击率不足时优先补足，再考虑暴伤。</li>
+            <li><b>攻击速度：</b>影响输出手感与单位时间伤害，视版本机制取舍。</li>
+            <li><b>无视防御：</b>面对高防御目标时价值明显，打王向配置可适当关注。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3><span></span>装备搭配思路</h3>
+          <ul>
+            <li><b>武器优先：</b>武器通常对伤害影响最大，资源有限时先考虑武器。</li>
+            <li><b>套装效果：</b>成套装备的额外加成往往优于单件堆叠。</li>
+            <li><b>过渡装备：</b>练级期不必追求顶配，够用即可，把资源留给长期装备。</li>
+            <li><b>潜能与附加：</b>逐步优化，不必一次到位，避免前期投入过多。</li>
+            <li><b>消耗品：</b>合理使用增益药水与料理，能在关键战斗中提供额外提升。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">常见问题</span>
+        <h2>关于浴火重生船长的疑问</h2>
+        <p>整理新手在接触这个职业时比较常问的几个问题。</p>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>船长适合新手作为第一个职业吗？</summary>
+          <p>
+            可以作为入门职业，但需要接受一定的学习成本。船长的操作不算复杂，但召唤物管理和站位意识需要时间适应。
+            如果你喜欢远程输出、愿意花点心思研究技能循环，它会是一个不错选择；如果更偏好简单直接的操作，可以先体验其他职业再决定。
+          </p>
+        </details>
+        <details>
+          <summary>船长的输出为什么感觉不稳定？</summary>
+          <p>
+            常见原因包括召唤物不在场、增益技能没有及时刷新、站位导致技能命中不完整，以及爆发技能与增益窗口没有对齐。
+            逐项检查这些环节，通常能明显改善实际伤害表现。
+          </p>
+        </details>
+        <details>
+          <summary>练级时应该优先堆什么？</summary>
+          <p>
+            练级阶段优先考虑清怪效率，也就是范围技能的覆盖与召唤物的持续输出能力。
+            单点伤害在练级中的作用相对有限，等到进入打王内容后再针对性调整配置会更合理。
+          </p>
+        </details>
+        <details>
+          <summary>“浴火重生”和普通船长有什么区别？</summary>
+          <p>
+            这类说法通常与特定版本、服务器或转职阶段的改动相关，不同环境下的技能名称、数值与机制可能存在差异。
+            建议以你所游玩版本的官方技能说明为准，本页内容主要用于理解职业的通用机制与养成方向。
+          </p>
+        </details>
+        <details>
+          <summary>打王时站位有什么建议？</summary>
+          <p>
+            基本原则是保持在技能射程内、同时留出躲避空间。不要贴得太近，也不要在首领释放范围技能时贪输出。
+            把位移技能留给关键规避，而不是全部用来赶路，能显著提高生存率。
+          </p>
+        </details>
+        <details>
+          <summary>需要投入很多资源才能玩吗？</summary>
+          <p>
+            这取决于你的目标。日常练级与普通内容对配置要求相对宽松，逐步提升即可；
+            如果目标是高难度首领或竞速类内容，则需要更系统的装备与潜能投入。建议按自己的节奏推进，不必一次到位。
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>关于本站</h4>
+        <p>
+          本页为冒险岛船长职业的专题整理，内容聚焦职业定位、技能机制与养成思路，
+          帮助玩家更快理解这一远程召唤型海盗职业的玩法逻辑。
+        </p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#intro">职业概览</a></li>
+          <li><a href="#skills">核心技能</a></li>
+          <li><a href="#build">加点思路</a></li>
+          <li><a href="#play">玩法流程</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>相关参考</h4>
+        <ul>
+          <li><a href="#gear">装备与配置</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">
+      内容基于职业通用机制整理，具体技能名称与数值请以所游玩版本的官方说明为准。
+    </p>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动兼容与导航高亮
+  (function () {
+    var links = document.querySelectorAll('.nav a[href^="#"]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var id = this.getAttribute('href');
+        var target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // 手风琴：同一时间只展开一个
+    var detailsList = document.querySelectorAll('.faq-list details');
+    detailsList.forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (this.open) {
+          detailsList.forEach(function (other) {
+            if (other !== item) { other.open = false; }
+          });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+    </html>
